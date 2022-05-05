@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import "./styles.scss";
 import {
@@ -7,6 +7,7 @@ import {
 } from "../../utils/firebase/firebase";
 import FormInput from "../FormInput/FormInput";
 import Button from "../Button/Button";
+import { UserContext } from "../../context/user";
 
 const defaultFormFields = {
   displayName: "",
@@ -18,6 +19,8 @@ const defaultFormFields = {
 const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
+
+  const { setCurrentUser } = useContext(UserContext);
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -36,6 +39,7 @@ const SignUpForm = () => {
 
       await createUserDocumentFromAuth(user, { displayName: displayName });
       resetFormFields();
+      setCurrentUser(user);
     } catch (error) {
       console.log("user creating encounted an error", error.message);
     }
