@@ -6,10 +6,10 @@ import { Provider } from "react-redux";
 import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { store } from "./store/store";
 // import { UserProvider } from "./context/user";
 // import { CategoriesProvider } from "./context/categories";
-import { CartProvider } from "./context/cart";
-import { store } from "./store/store";
+// import { CartProvider } from "./context/cart";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -18,9 +18,9 @@ root.render(
       <BrowserRouter>
         {/*<UserProvider>*/}
         {/*<CategoriesProvider>*/}
-        <CartProvider>
-          <App />
-        </CartProvider>
+        {/*<CartProvider>*/}
+        <App />
+        {/*</CartProvider>*/}
         {/*</CategoriesProvider>*/}
         {/*</UserProvider>*/}
       </BrowserRouter>
