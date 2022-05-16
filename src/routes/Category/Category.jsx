@@ -5,12 +5,17 @@ import { useSelector } from "react-redux";
 import { CategoryContainer, CategoryTitle } from "./styles";
 // import { CategoriesContext } from "../../context/categories";
 import ProductCard from "../../components/ProductCard/ProductCard";
-import { selectCategoriesMap } from "../../store/categories/categoriesSelector";
+import Spinner from "../../components/Spinner/Spinner";
+import {
+  selectCategoriesIsLoading,
+  selectCategoriesMap,
+} from "../../store/categories/categoriesSelector";
 
 const Category = () => {
   const { category } = useParams();
   // const { categoriesMap } = useContext(CategoriesContext);
   const categoriesMap = useSelector(selectCategoriesMap);
+  const isLoading = useSelector(selectCategoriesIsLoading);
   const [products, setProducts] = useState(categoriesMap[category]);
 
   useEffect(() => {
@@ -20,11 +25,15 @@ const Category = () => {
   return (
     <>
       <CategoryTitle>{category.toUpperCase()}</CategoryTitle>
-      <CategoryContainer>
-        {products?.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </CategoryContainer>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <CategoryContainer>
+          {products?.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </CategoryContainer>
+      )}
     </>
   );
 };

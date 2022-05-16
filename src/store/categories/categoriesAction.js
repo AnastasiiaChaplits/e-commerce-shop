@@ -2,7 +2,7 @@ import { CategoriesActionTypes } from "./categoriesTypes";
 import { getCategoriesAndDocuments } from "../../utils/firebase/firebase";
 
 export const fetchCategoriesStart = () => ({
-  type: CategoriesActionTypes.FETCH_CATEGORIES_FAILED,
+  type: CategoriesActionTypes.FETCH_CATEGORIES_START,
 });
 
 export const fetchCategoriesSuccess = (categoriesArray) => ({
@@ -11,7 +11,7 @@ export const fetchCategoriesSuccess = (categoriesArray) => ({
 });
 
 export const fetchCategoriesFailed = (error) => ({
-  type: CategoriesActionTypes.FETCH_CATEGORIES_SUCCESS,
+  type: CategoriesActionTypes.FETCH_CATEGORIES_FAILED,
   payload: error,
 });
 
