@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { ProductCardContainer, Footer, Name, Price } from "./styles";
@@ -6,7 +7,16 @@ import { addItemToCart } from "../../store/cart/cartAction";
 import { selectCartItems } from "../../store/cart/cartSelector";
 // import { CartContext } from "../../context/cart";
 
-const ProductCard = ({ product }) => {
+type Item = {
+  id: number;
+  name: string;
+  price: number;
+  imageUrl: string;
+};
+export type ProductCardProps = {
+  product: Item;
+};
+const ProductCard: FC<ProductCardProps> = ({ product }) => {
   // const { addItemToCart } = useContext(CartContext);
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);

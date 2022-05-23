@@ -1,6 +1,18 @@
+import { FC } from "react";
 import { DirectoryItemContainer, Body, BackgroundImage } from "./styled";
 
-const DirectoryItem = ({ category: { title, imageUrl } }) => {
+type Category = {
+  title: string;
+  imageUrl: string;
+};
+
+export type DirectoryItemProps = {
+  category: Category;
+};
+
+const DirectoryItem: FC<DirectoryItemProps> = ({
+  category: { title, imageUrl },
+}) => {
   return (
     <DirectoryItemContainer>
       <BackgroundImage imageUrl={imageUrl} />
