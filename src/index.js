@@ -11,9 +11,6 @@ import reportWebVitals from "./reportWebVitals";
 import { store, persistor } from "./store/store";
 
 import { stripePromise } from "./utils/stripe/stripe";
-// import { UserProvider } from "./context/user";
-// import { CategoriesProvider } from "./context/categories";
-// import { CartProvider } from "./context/cart";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,13 +19,7 @@ root.render(
       <PersistGate persistor={persistor} loading={null}>
         <BrowserRouter>
           <Elements stripe={stripePromise}>
-            {/*<UserProvider>*/}
-            {/*<CategoriesProvider>*/}
-            {/*<CartProvider>*/}
             <App />
-            {/*</CartProvider>*/}
-            {/*</CategoriesProvider>*/}
-            {/*</UserProvider>*/}
           </Elements>
         </BrowserRouter>
       </PersistGate>
